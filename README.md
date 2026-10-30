@@ -1,7 +1,31 @@
-# Own Brand v8 — Classification and official source matching
+# Own Brand - Catalog Redesign
 
-- All toothbrushes (including children's) are classified in Oral Care > فرش الأسنان.
-- Children's wound plasters and dressings are classified in Medical Devices > مستلزمات طبية أخرى.
-- 10 verified Al-Dawaa product pages are linked by SKU for image sourcing and review.
-- Actual image URLs are **not yet linked**. Do not substitute guessed photos: the image placeholder remains until a verified image asset URL is available.
-- 879 SKUs retained. Other automatic categories still require an item-by-item audit.
+كتالوج العلامات الخاصة، بواجهة مستوحاة من مرجع التصميم المرفق.
+
+## التشغيل والنشر
+- فك ضغط الملف وارفع محتوياته إلى استضافتك، مع إبقاء المجلدات كما هي.
+- index.html هو الملف الرئيسي. افتح الموقع عبر خادم ويب أو GitHub Pages / Vercel.
+- التشغيل المحلي: python3 -m http.server 8000 ثم افتح http://localhost:8000
+- لا تحتاج هذه النسخة إلى تثبيت حزم أو خطوة build.
+
+## الملفات الرئيسية
+- index.html: الواجهة المتجاوبة.
+- styles.css: الهوية البصرية وتنسيق الكمبيوتر والجوال.
+- taxonomy.js: قواعد الأقسام والتصنيفات الفرعية والترتيب.
+- app.js: البحث، الفلاتر، العلامات، تحميل المزيد ونافذة تفاصيل المنتج.
+- products.json: المنتجات؛ تمت إضافة القسم والتصنيف الفرعي مع الاحتفاظ بالعلامة الأصلية في originalBrand.
+- catalog_structure.json: الأقسام والتصنيفات الفرعية وأعداد المنتجات.
+- images/: الصور الأصلية الـ188 المحفوظة بأكواد SKU.
+- image_sources.csv / image_sources.json: مصادر صور المنتجات.
+
+## التنظيم الجديد
+- 879 منتج في 9 أقسام رئيسية؛ يتبع كل قسم تصنيفات فرعية حسب نوع المنتج.
+- الترتيب الافتراضي: القسم، نوع المنتج، العلامة، سلسلة المنتج، الحجم ثم SKU.
+- طرق إضافية للترتيب: العلامة، الاسم، الكود.
+- توحيد أسماء العلامات المكررة بسبب الفواصل، وجمع مستحضرات Dawaa Health تحت علامتها.
+- تصحيح تداخل chair وhair، وإبقاء منتجات الأسنان والأجهزة والضمادات في أقسامها المناسبة.
+- على الجوال تظهر 6 أقسام أولاً، مع زر لعرض كل الأقسام.
+- يحتفظ الكتالوج بجميع المنتجات؛ هذه النسخة لا تعتمد عدم ظهور الصنف دليلاً على نفاده.
+
+## ملاحظات البيانات
+الأسماء والأكواد من الكتالوج المرفق. الصور وروابطها من موقع الدواء. بيانات التوفر تتغير، ويُرجى الرجوع للموقع الرسمي لتأكيدها. لا تُستخدم التصنيفات بدلاً من بيانات المنتج الرسمية.
