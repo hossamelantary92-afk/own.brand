@@ -16,13 +16,18 @@ hair:['شامبو','بلسم','سيروم','عناية وعلاج الشعر','�
 oral:['معجون الأسنان','غسول الفم','فرش الأسنان','خيط الأسنان'],
 baby:['حليب الأطفال','حفاضات الأطفال','العناية ببشرة الطفل','مناديل الأطفال'],
 medical:['أجهزة الحرارة','أجهزة الضغط','أجهزة السكر','إبر ومستلزمات الحقن','وسائل الحركة','مستلزمات طبية أخرى'],
-personal:['الاستحمام','الحلاقة','العناية اليومية'],
+personal:['الاستحمام','الحلاقة','غسول نسائي','العناية اليومية'],
 medicines:['كريمات ومراهم علاجية','بخاخات وقطرات الأنف','مستحضرات علاجية أخرى'],
 other:['عدسات تجميل','واقيات ذكرية','منتجات متنوعة أخرى']};
 let activeCategory='',activeSubcategory='';
 function classify(p){
  const n=normalize(p.name), ar=normalize(p.arabic), cl=String(p.itemClass||'').toUpperCase();
  const has=(...keys)=>keys.some(k=>n.includes(k));
+ // Feminine wash and care are personal care, not facial cleansing.
+ if(has('intimate wash','feminine wash','fem wash','vaginal wash','gyn-phy','gyn phy','feminine wipes','intimate deodorant','intimate deodrant'))return {id:'personal',sub:'غسول نسائي'};
+ // SUABELLE hair serum: explicit brand-level priority before generic skin serum.
+ if(n.startsWith('suabelle')&&has('serum'))return {id:'hair',sub:'سيروم'};
+
  // Priority rules prevent wheelchairs, glucose monitors and nasal sprays from landing in hair/skin care.
  if(has('clarity 6 months','clarity lenses','contact lens','colored lens','colour lens','color lens','cosmetic lens','lens solution'))return {id:'other',sub:'عدسات تجميل'};
  if(has('smart con ','smart condom','lgnd condom','condoms'))return {id:'other',sub:'واقيات ذكرية'};
@@ -33,7 +38,7 @@ function classify(p){
  if(has('clarity daily lenses','clarity monthly','clarity 6 months','clarity lenses'))return {id:'other',sub:'عدسات تجميل'};
  if(has('premi bpm','blood pressure monitor','bpm upper arm'))return {id:'medical',sub:'أجهزة الضغط'};
  if(has('minoxidil','dry sh ','h/mousse','h/fix spray','fix spray ex-strong'))return {id:'hair',sub:'عناية وعلاج الشعر'};
- if(has('sebi um','sebium mousant','se bium','intimate wash','mousant'))return {id:'skin',sub:'غسول البشرة'};
+ if(has('sebi um','sebium mousant','se bium','mousant'))return {id:'skin',sub:'غسول البشرة'};
  if(has('cicalfate cream','hand cream'))return {id:'skin',sub:'كريمات'};
  if(has('slimming tea','anise tea','chamomile','hibiscus tea','green tea','ginger & lemon tea'))return {id:'supplements',sub:'المكملات الغذائية'};
  if(has('vaporub','ice spray','ear drops','horse balm','devil s claw','minoxidil'))return {id:'medicines',sub:'كريمات ومراهم علاجية'};

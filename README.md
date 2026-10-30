@@ -1,4 +1,6 @@
-# Own Brand Internal Catalog v5
-879 products, grouped into learning categories. Fixed skin cleansers (`CLEANSER`) and toothpastes (`T/P`) in the catalog.
-Product images: the cards support actual product photographs via `IMAGE_MAP` in `app.js` keyed by SKU. Only insert a verified official product image URL; until then the card explicitly shows IMAGE PENDING. No stock or availability is inferred from photos.
-Deploy the folder on Vercel/GitHub Pages. The site is currently public unless protected by your hosting/authentication setup.
+# Own Brand v7
+- Feminine intimate wash/care classified under Personal Care > غسول نسائي.
+- WHYYTE spelling normalized to WHYTE and brand displayed as Whyte.
+- SUABELLE hair serums classified under Hair Care > سيروم.
+- Product grid reads left-to-right, while Arabic content inside cards retains RTL layout.
+- 879 original SKUs retained. Product image placeholders remain until verified photos are sourced.

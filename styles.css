@@ -18,3 +18,8 @@
 .product-image small{font-size:9px;letter-spacing:1.2px;font-weight:700}
 .product-grid.list .product-image{height:78px;width:92px;flex-shrink:0}
 @media(max-width:650px){.product-image{height:116px}}
+
+/* v7: product order follows left-to-right reading sequence */
+.product-grid{direction:ltr}
+.product-card{direction:rtl}
+.product-grid.list{direction:ltr}
